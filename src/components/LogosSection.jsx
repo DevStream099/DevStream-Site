@@ -1,0 +1,50 @@
+import "./LogosSection.css";
+
+import BootstrapLogo from "../assets/bootstrape.png";
+import JavaLogo from "../assets/java.png";
+import JavaScriptLogo from "../assets/javascript.png";
+import KotlinLogo from "../assets/kotlin.png";
+import PythonLogo from "../assets/Python.png";
+import ReactLogo from "../assets/react.png";
+import ReduxLogo from "../assets/redux.png";
+import TailwindLogo from "../assets/tailwind.png";
+import TypeScriptLogo from "../assets/typescript.png";
+
+const clientLogos = [
+  { src: ReactLogo, alt: "React" },
+  { src: BootstrapLogo, alt: "Bootstrap", sizeClass: "logo-item--boost" },
+  { src: ReduxLogo, alt: "Redux" },
+  { src: TailwindLogo, alt: "Tailwind CSS", sizeClass: "logo-item--boost" },
+  { src: JavaScriptLogo, alt: "JavaScript" },
+  { src: KotlinLogo, alt: "Kotlin", sizeClass: "logo-item--boost" },
+  { src: TypeScriptLogo, alt: "TypeScript" },
+  { src: JavaLogo, alt: "Java" },
+  { src: PythonLogo, alt: "Python" },
+];
+
+const LogosSection = () => {
+  // Duplicate once for a seamless infinite scroll loop (same idea as Testimonials).
+  const scrollingLogos = [...clientLogos, ...clientLogos];
+
+  return (
+    <section id="clients" className="logos-section">
+      <div className="container">
+        <div className="logos-marquee" aria-label="Client logos">
+          <div className="logos-track">
+            {scrollingLogos.map((logo, index) => (
+              <div
+                className={`logo-item ${logo.sizeClass || ""}`}
+                key={`${logo.alt}-${index}`}
+              >
+                <img src={logo.src} alt={logo.alt} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default LogosSection;
+

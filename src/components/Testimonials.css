@@ -1,0 +1,236 @@
+/* ===== Testimonials Section ===== */
+.testimonials {
+  background: linear-gradient(135deg, #032dec 0%, #0a63b7 50%, #9f989b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Make testimonials content a bit wider than the default container */
+.testimonials .container {
+  max-width: 1320px;
+}
+
+/* ===== Horizontal marquee layout ===== */
+.testimonials-marquee {
+  --testimonial-gap: 40px;
+  --scroll-duration: 45s;
+  position: relative;
+  overflow: hidden;
+  /* Soft edge fade (supported in modern browsers) */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.testimonials-track {
+  display: inline-flex;
+  align-items: stretch;
+  gap: var(--testimonial-gap);
+  width: max-content;
+  will-change: transform;
+  animation: testimonials-scroll var(--scroll-duration) linear infinite;
+}
+
+/* Pause scrolling while user is interacting */
+.testimonials-marquee:hover .testimonials-track {
+  animation-play-state: paused;
+}
+
+@keyframes testimonials-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    /* We duplicate the list once in JSX, so moving by half loops seamlessly */
+    /* Simple + widely compatible; if you ever see a tiny "gap jump", we can tune this */
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ===== Testimonial Card (Wider + Shorter) ===== */
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.96);
+  padding: 34px 32px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  transform: translateY(40px);
+  opacity: 0;
+  /* Keep cards horizontal and consistent in the track */
+  flex: 0 0 520px;
+}
+
+/* Visible Animation */
+.testimonials.visible .testimonial-card {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hover Animation */
+.testimonial-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Quote Icon ===== */
+.quote-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #032dec, #0aa5dd);
+  border-radius: 16px;
+  transition: 0.3s ease;
+}
+
+.quote-icon svg {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+
+.testimonial-card:hover .quote-icon {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+/* ===== Title Text ===== */
+.testimonial-text {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+/* ===== Description ===== */
+.testimonial-description {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  color: #555;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===== Rating ===== */
+.testimonial-rating {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.testimonial-rating svg {
+  width: 20px;
+  height: 20px;
+  color: #ffc107;
+  transition: 0.3s ease;
+}
+
+.testimonial-card:hover .testimonial-rating svg {
+  transform: scale(1.2);
+}
+
+/* ===== Author ===== */
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Avatar */
+.author-avatar span {
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg, #032dec, #0aa5dd);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+/* Author Info */
+.author-info h4 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.author-info span {
+  font-size: 13px;
+  color: #0a63b7;
+  font-weight: 500;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .testimonials-track {
+    --testimonial-gap: 28px;
+    --scroll-duration: 55s;
+  }
+
+  .testimonial-card {
+    flex-basis: 540px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 28px 22px;
+    flex-basis: 340px;
+  }
+
+  .testimonial-text {
+    font-size: 22px;
+  }
+
+  .testimonial-description {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-text {
+    font-size: 20px;
+  }
+
+  .testimonial-description {
+    font-size: 14px;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-track {
+    /* Still animate, but much slower */
+    animation-duration: 120s;
+  }
+}
+
+/* Fallback for browsers that don't fully support max-content sizing */
+@supports not (width: max-content) {
+  .testimonials-track {
+    width: auto;
+  }
+}

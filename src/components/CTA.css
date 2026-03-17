@@ -1,0 +1,239 @@
+/* ===== CTA Section ===== */
+.cta {
+  background: linear-gradient(135deg, #032dec 0%, #0a63b7 50%, #9f989b 100%);
+  text-align: center;
+  padding: 150px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== Background Elements ===== */
+.cta-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cta-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cta-shape-1 {
+  width: 500px;
+  height: 500px;
+  top: -200px;
+  right: -200px;
+  animation: ctaShapeFloat 20s ease-in-out infinite;
+}
+
+.cta-shape-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  left: -150px;
+  animation: ctaShapeFloat 25s ease-in-out infinite reverse;
+}
+
+@keyframes ctaShapeFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, -20px) rotate(90deg);
+  }
+  50% {
+    transform: translate(-10px, 10px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-20px, -10px) rotate(270deg);
+  }
+}
+
+/* ===== Floating Particles ===== */
+.cta-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.cta-particle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  bottom: 0;
+  left: var(--x);
+  animation: ctaParticleRise 12s linear infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes ctaParticleRise {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ===== CTA Content ===== */
+.cta-content {
+  position: relative;
+  z-index: 10;
+}
+
+.cta-label {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--white);
+  margin-bottom: 20px;
+  padding: 10px 25px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta.visible .cta-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-content h2 {
+  color: var(--white);
+  font-size: 48px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+}
+
+.cta.visible .cta-content h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-content p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 20px;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.cta.visible .cta-content p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== CTA Button ===== */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 45px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--white);
+  color: #667eea;
+  border-radius: 50px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta.visible .btn-cta {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.btn-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-cta:hover::before {
+  left: 100%;
+}
+
+.btn-cta svg {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease;
+}
+
+.btn-cta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cta:hover svg {
+  transform: translateX(5px);
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 768px) {
+  .cta {
+    padding: 120px 0;
+  }
+
+  .cta-content h2 {
+    font-size: 32px;
+  }
+
+  .cta-content p {
+    font-size: 16px;
+  }
+
+  .btn-cta {
+    padding: 16px 35px;
+    font-size: 14px;
+  }
+
+  .cta-shape-1 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .cta-shape-2 {
+    width: 250px;
+    height: 250px;
+  }
+}

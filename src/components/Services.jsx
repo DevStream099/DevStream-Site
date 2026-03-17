@@ -1,0 +1,163 @@
+import { useEffect, useRef, useState } from 'react';
+import './Services.css';
+
+const services = [
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+        <path d="M12 18h.01"/>
+      </svg>
+    ),
+    title: 'Mobile App Development',
+    description:
+      'Cross-platform iOS and Android applications built using React Native, Expo, Swift, and Kotlin with optimized performance and seamless user experience.',
+    color: '#667eea'
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <polyline points="16 18 22 12 16 6"/>
+        <polyline points="8 6 2 12 8 18"/>
+      </svg>
+    ),
+    title: 'Full-Stack Development',
+    description:
+      'End-to-end development using React JS, Node.js, REST APIs, GraphQL, and scalable backend architecture.',
+    color: '#764ba2'
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
+      </svg>
+    ),
+    title: 'Real-Time Applications',
+    description:
+      'Live chat systems, tracking apps, and WebSocket-based platforms using Socket.io and Firebase.',
+    color: '#ed64a6'
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+    ),
+    title: 'Performance & Optimization',
+    description:
+      'Advanced caching strategies, performance tuning, code refactoring, and smooth UI transitions.',
+    color: '#f093fb'
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <circle cx="9" cy="21" r="1"/>
+        <circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+    ),
+    title: 'E-Commerce & Payments',
+    description:
+      'Secure payment integrations including Stripe, In-App Purchases, and FlutterWave with optimized checkout flows.',
+    color: '#4facfe'
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M9 12l2 2 4-4"/>
+        <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+      </svg>
+    ),
+    title: 'Testing & Deployment',
+    description:
+      'Unit testing (Jest, Cypress), CI/CD pipelines, and App Store & Play Store deployment support.',
+    color: '#00f2fe'
+  }
+];
+
+const Services = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      id="services"
+      className={`services section ${isVisible ? 'visible' : ''}`}
+      ref={sectionRef}
+    >
+      {/* Background Decorations */}
+      <div className="services-bg">
+        <div className="bg-circle bg-circle-1"></div>
+        <div className="bg-circle bg-circle-2"></div>
+      </div>
+
+      <div className="container">
+        <div className="section-title">
+          <h2>How can we help you?</h2>
+          <p>
+            We build scalable mobile and web applications with modern
+            technologies, ensuring performance, security, and exceptional user
+            experience.
+          </p>
+        </div>
+
+        <div className="services-grid">
+          {services.map((service, index) => (
+            <div
+              className="service-card"
+              key={index}
+              style={{
+                '--card-color': service.color,
+                '--delay': `${index * 0.1}s`
+              }}
+            >
+              <div className="service-icon-wrapper">
+                <div
+                  className="service-icon"
+                  style={{ color: service.color }}
+                >
+                  {service.icon}
+                </div>
+                <div className="icon-bg"></div>
+              </div>
+
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+
+              {/* <a href="#" className="service-link">
+                <span>Learn More</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a> */}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;

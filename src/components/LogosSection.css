@@ -1,0 +1,118 @@
+.logos-section {
+  padding: 56px 0;
+  background: #ffffff;
+}
+
+/* Make this section a bit wider than the default container */
+.logos-section .container {
+  max-width: 1440px;
+}
+
+.logos-marquee {
+  --logo-gap: 64px;
+  --scroll-duration: 10s;
+  position: relative;
+  overflow: hidden;
+}
+
+.logos-track {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--logo-gap);
+  width: max-content;
+  will-change: transform;
+  animation: logos-scroll var(--scroll-duration) linear infinite;
+}
+
+/* Pause scrolling while user is interacting */
+.logos-marquee:hover .logos-track {
+  animation-play-state: paused;
+}
+
+@keyframes logos-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    /* We duplicate the list once in JSX, so moving by half loops seamlessly */
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.logo-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo-item img {
+  height: 80px;          /* force a consistent visual size for all logos */
+  width: auto;
+  display: block;
+  filter: none;
+  object-fit: contain;   /* keeps aspect ratio while scaling up smaller assets */
+}
+
+/* Slightly boost visually smaller assets like Bootstrap / Kotlin / Tailwind */
+.logo-item--boost img {
+  height: 96px;
+}
+
+.logo-item:hover {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+/* Responsive tweaks */
+@media (max-width: 992px) {
+  .logos-marquee {
+    --logo-gap: 52px;
+    --scroll-duration: 15s;
+  }
+
+  .logo-item img {
+    height: 68px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logos-section {
+    padding: 40px 0;
+  }
+
+  .logos-marquee {
+    --logo-gap: 40px;
+  }
+
+  .logo-item img {
+    height: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logos-marquee {
+    --logo-gap: 28px;
+  }
+
+  .logo-item img {
+    height: 48px;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .logos-track {
+    animation-duration: 120s;
+  }
+}
+
+/* Fallback for browsers that don't fully support max-content sizing */
+@supports not (width: max-content) {
+  .logos-track {
+    width: auto;
+  }
+}
+
