@@ -1,5 +1,5 @@
 .logos-section {
-  padding: 56px 0;
+  padding: 20px 0;
   background: #ffffff;
 }
 
@@ -10,7 +10,7 @@
 
 .logos-marquee {
   --logo-gap: 64px;
-  --scroll-duration: 10s;
+  --scroll-duration: 40s;
   position: relative;
   overflow: hidden;
 }
@@ -49,8 +49,8 @@
 }
 
 .logo-item img {
-  height: 80px;          /* force a consistent visual size for all logos */
-  width: auto;
+  height: 150px;        /* requested: 1500 x 1500 */
+  width: 150px;
   display: block;
   filter: none;
   object-fit: contain;   /* keeps aspect ratio while scaling up smaller assets */
@@ -58,7 +58,8 @@
 
 /* Slightly boost visually smaller assets like Bootstrap / Kotlin / Tailwind */
 .logo-item--boost img {
-  height: 96px;
+  height: 150px;
+  width: 150px;
 }
 
 .logo-item:hover {
@@ -70,11 +71,7 @@
 @media (max-width: 992px) {
   .logos-marquee {
     --logo-gap: 52px;
-    --scroll-duration: 15s;
-  }
-
-  .logo-item img {
-    height: 68px;
+    --scroll-duration: 8s;
   }
 }
 
@@ -86,26 +83,18 @@
   .logos-marquee {
     --logo-gap: 40px;
   }
-
-  .logo-item img {
-    height: 56px;
-  }
 }
 
 @media (max-width: 480px) {
   .logos-marquee {
     --logo-gap: 28px;
   }
-
-  .logo-item img {
-    height: 48px;
-  }
 }
 
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .logos-track {
-    animation-duration: 120s;
+    animation-duration: 60s;
   }
 }
 

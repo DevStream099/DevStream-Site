@@ -9,6 +9,10 @@ import ReactLogo from "../assets/react.png";
 import ReduxLogo from "../assets/redux.png";
 import TailwindLogo from "../assets/tailwind.png";
 import TypeScriptLogo from "../assets/typescript.png";
+import FirebaseLogo from "../assets/firebase.png";
+import NodeJsLogo from "../assets/nodejs.png";
+import MongoDBLogo from "../assets/mongodb.png";
+import MySqlLogo from "../assets/mysql.png";
 
 const clientLogos = [
   { src: ReactLogo, alt: "React" },
@@ -18,8 +22,12 @@ const clientLogos = [
   { src: JavaScriptLogo, alt: "JavaScript" },
   { src: KotlinLogo, alt: "Kotlin", sizeClass: "logo-item--boost" },
   { src: TypeScriptLogo, alt: "TypeScript" },
+  { src: NodeJsLogo, alt: "NodeJS", sizeClass: "logo-item--boost"  },
+  { src: FirebaseLogo, alt: "Firebase" , sizeClass: "logo-item--boost" },
+  { src: MongoDBLogo, alt: "MongoDB" , sizeClass: "logo-item--boost" },
+  { src: MySqlLogo, alt: "MySQL" , sizeClass: "logo-item--boost" },
   { src: JavaLogo, alt: "Java" },
-  { src: PythonLogo, alt: "Python" },
+  { src: PythonLogo, alt: "Python" }, 
 ];
 
 const LogosSection = () => {
