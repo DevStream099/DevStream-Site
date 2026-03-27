@@ -10,7 +10,7 @@ import ReduxLogo from "../assets/redux.png";
 import TailwindLogo from "../assets/tailwind.png";
 import TypeScriptLogo from "../assets/typescript.png";
 import FirebaseLogo from "../assets/firebase.png";
-import NodeJsLogo from "../assets/nodejs.png";
+import NodeJsLogo from "../assets/nodeJs.png";
 import MongoDBLogo from "../assets/mongodb.png";
 import MySqlLogo from "../assets/mysql.png";
 
