@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { portfolioItems } from './Portfolio';
+import { portfolioItems } from './portfolioData';
 import ProjectDetails from './ProjectDetails';
 import Header from './Header';
 import Footer from './Footer';

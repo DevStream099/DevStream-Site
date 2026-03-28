@@ -1,10 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import DevLogo from '../assets/DevLogo.png';
 import './Footer.css';
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
   const footerRef = useRef(null);
+  const particles = useMemo(() => {
+    return Array.from({ length: 15 }, (_, i) => ({
+      delay: `${i * 0.3}s`,
+      x: `${Math.random() * 100}%`,
+      size: `${4 + Math.random() * 6}px`,
+    }));
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -64,8 +71,12 @@ const Footer = () => {
               </a>
             </div>
                <div className="cta-particles">
-          {[...Array(15)].map((_, i) => (
-            <span key={i} className="cta-particle" style={{ '--delay': `${i * 0.3}s`, '--x': `${Math.random() * 100}%`, '--size': `${4 + Math.random() * 6}px` }}></span>
+          {particles.map((p, i) => (
+            <span
+              key={i}
+              className="cta-particle"
+              style={{ '--delay': p.delay, '--x': p.x, '--size': p.size }}
+            ></span>
           ))}
         </div>
           </div>
