@@ -28,10 +28,10 @@ const ContactForm = () => {
 
     emailjs
       .send(
-        "service_92h2104",     
-        "template_spbpcvw",    
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formData,
-        "rT-SJyIK8Y1h2j_D2"      
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
         (result) => {

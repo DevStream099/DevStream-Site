@@ -151,6 +151,26 @@
   transform: translateY(-3px);
 }
 
+.btn-quote {
+  display: inline-flex;
+  align-items: center;
+  padding: 18px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #2563EB;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+}
+
+.btn-quote:hover {
+  background: #1d4ed8;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.5);
+}
+
 /* ===== Hero Stats ===== */
 .hero-stats {
   display: flex;

@@ -1,7 +1,8 @@
 import "./LogosSection.css";
 
 import BootstrapLogo from "../assets/bootstrape.png";
-import JavaLogo from "../assets/java.png";
+import FigmaLogo from "../assets/figma.png";
+import OpenAiLogo from "../assets/openAi.png";
 import JavaScriptLogo from "../assets/javascript.png";
 import KotlinLogo from "../assets/kotlin.png";
 import PythonLogo from "../assets/Python.png";
@@ -26,8 +27,9 @@ const clientLogos = [
   { src: FirebaseLogo, alt: "Firebase" , sizeClass: "logo-item--boost" },
   { src: MongoDBLogo, alt: "MongoDB" , sizeClass: "logo-item--boost" },
   { src: MySqlLogo, alt: "MySQL" , sizeClass: "logo-item--boost" },
-  { src: JavaLogo, alt: "Java" },
-  { src: PythonLogo, alt: "Python" }, 
+  { src: FigmaLogo, alt: "Figma" },
+  { src: OpenAiLogo, alt: "OpenAI" },
+  { src: PythonLogo, alt: "Python" },
 ];
 
 const LogosSection = () => {
