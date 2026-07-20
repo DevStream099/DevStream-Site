@@ -14,9 +14,152 @@
 
 .contact-container h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 2rem;
   color: #103c68;
+}
+
+.contact-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+}
+
+/* ===== Tabs ===== */
+.contact-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  background: #f0f4f8;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.contact-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: #666;
+  transition: all 0.25s ease;
+}
+
+.contact-tab svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.contact-tab.active {
+  background: linear-gradient(90deg, #1679db, #103c68);
+  color: white;
+  box-shadow: 0 2px 8px rgba(22, 121, 219, 0.3);
+}
+
+.contact-tab:hover:not(.active) {
+  color: #1679db;
+}
+
+/* ===== Cal Booking Panel ===== */
+.cal-booking-panel {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 10px;
+}
+
+.cal-booking-info {
+  text-align: center;
+  max-width: 420px;
+}
+
+.cal-icon-wrap {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #1679db22, #103c6822);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.cal-icon-wrap svg {
+  width: 34px;
+  height: 34px;
+  color: #1679db;
+}
+
+.cal-booking-info h3 {
+  font-size: 1.4rem;
+  color: #103c68;
+  margin-bottom: 10px;
+}
+
+.cal-booking-info > p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.cal-perks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.cal-perks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.cal-perks li svg {
+  width: 18px;
+  height: 18px;
+  color: #1679db;
+  flex-shrink: 0;
+}
+
+.cal-book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, #1679db, #103c68);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 6px 20px rgba(22, 121, 219, 0.35);
+}
+
+.cal-book-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.cal-book-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
 .contact-form {
