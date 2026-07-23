@@ -89,8 +89,12 @@ const Footer = () => {
           <motion.div className="footer-col" variants={colVariants}>
             <h4>Services</h4>
             <ul>
-              <li><a href="#">Web Design</a></li>
-              <li><a href="#">Development</a></li>
+              <li><a href="#services">Mobile App Development</a></li>
+              <li><a href="#services">Web App Development</a></li>
+              <li><a href="#services">UI/UX Design Service</a></li>
+              <li><a href="#services">Performance &amp; Optimization</a></li>
+              <li><a href="#services">E-Commerce Solutions</a></li>
+              <li><a href="#services">Testing &amp; Deployment</a></li>
             </ul>
           </motion.div>
 
@@ -104,7 +108,7 @@ const Footer = () => {
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                 </span>
-                <span>Gujranwala, Punjab, Pakistan</span>
+                <span>Pakistan</span>
               </li>
               <li>
                 <span className="contact-icon">

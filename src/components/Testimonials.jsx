@@ -3,36 +3,68 @@ import './Testimonials.css';
 
 const testimonialsData = [
   {
-    text: 'Amazing Designs and Quality Work!',
+    text: 'Exceptional React Native Team',
     description:
-      'DevStream delivered beyond our expectations. The UI/UX quality and performance were absolutely top-notch.',
-    name: 'John Doe',
-    role: 'CEO, Acme Inc.',
-    initials: 'JD',
+      'An exceptional React Native team who consistently delivered high-quality work. Their deep understanding of React Native and its ecosystem is evident in the innovative solutions they brought to our project. A rare combination of technical expertise, creativity, and a keen eye for detail. I will definitely hire them again!',
+    name: 'Verified Upwork Client',
+    role: 'React Native Developer — Ongoing Work',
+    initials: 'RN',
   },
   {
-    text: 'Highly Professional Team',
+    text: 'Great to Work With',
     description:
-      'Collaborating with DevStream was seamless. Their strategic insights, technical expertise, and proactive communication significantly contributed to the success of our projects.',
-    name: 'Sarah Khan',
-    role: 'Marketing Director, BrightCo',
-    initials: 'SK',
+      'Umar was responsive, professional, and easy to collaborate with throughout the process. He communicated well, adapted to changing requirements, and consistently put in solid effort to keep things moving forward. I appreciated his reliability and would be happy to work with him again.',
+    name: 'Verified Upwork Client',
+    role: 'Build an AI Content Platform',
+    initials: 'AI',
   },
   {
-    text: 'Outstanding Support & Delivery',
+    text: 'Excellent MERN & React Native Expertise',
     description:
-      'DevStream demonstrated exceptional project management and technical proficiency. They delivered our solutions ahead of schedule while maintaining the highest standards.',
-    name: 'Michael Lee',
-    role: 'Founder, StartUp Hub',
-    initials: 'ML',
+      'Excellent developer with strong expertise in MERN stack and React Native. Maryam delivered high-quality work, communicated clearly throughout the project, and consistently provided practical solutions to complex challenges. Reliable, professional, and easy to work with.',
+    name: 'Verified Upwork Client',
+    role: 'ReactJS / React Native QA',
+    initials: 'QA',
   },
   {
-    text: 'Creative & Reliable Developers',
+    text: 'Professional & Highly Recommended',
     description:
-      'DevStream transformed our ideas into a modern and responsive platform. Highly recommended!',
-    name: 'Emma Wilson',
-    role: 'Product Manager, TechFlow',
-    initials: 'EW',
+      'The team was great to work with on this project. They were able to work with my existing codebase and extend the functionality without any issues. Great communicators, provided consistent meetings and updates, and kept to our project timeline. We are continuing to work with them on other projects.',
+    name: 'Verified Upwork Client',
+    role: 'Build a Voice Agent Dashboard',
+    initials: 'VA',
+  },
+  {
+    text: 'A Very Reliable Developer',
+    description:
+      'Muhammad is a very reliable developer. He has a masterful control of English communications, he listens, and gives me exactly what I expect.',
+    name: 'Verified Upwork Client',
+    role: 'Outing Resort / Courses Screen',
+    initials: 'OR',
+  },
+  {
+    text: 'CI/CD Pipeline Fixed Efficiently',
+    description:
+      'Umar quickly identified and resolved the issues in our React Native Expo CI/CD pipeline. Communication was clear throughout the project, and he demonstrated strong expertise with Expo, EAS Build, and deployment automation. Our build and deployment process is now running smoothly.',
+    name: 'johnspelman1',
+    role: 'Fiverr Client',
+    initials: 'J',
+  },
+  {
+    text: 'Delivered Ahead of Time',
+    description:
+      'He has done an exceptional job. He understood my requirements and delivered ahead of time exactly what I wanted. I will recommend him 100%.',
+    name: 'dbooker_racing',
+    role: 'Fiverr Client',
+    initials: 'D',
+  },
+  {
+    text: 'Outstanding Work Under Pressure',
+    description:
+      'Outstanding work! My React Native app was failing during the Android build process, and Maryam fixed it efficiently without breaking anything else.',
+    name: 'johndoefresh',
+    role: 'Fiverr Client',
+    initials: 'J',
   },
 ];
 

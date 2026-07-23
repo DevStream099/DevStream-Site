@@ -1,7 +1,7 @@
 /* ===== Footer Section ===== */
 .footer {
-  /* background: linear-gradient(135deg, #032dec 0%, #0a63b7 50%, #9f989b 100%); */
-  background: linear-gradient(135deg, #9f989b  0%, #0a63b7 50%, #032dec 100%);
+  /* background: linear-gradient(135deg, #3461f0 0%, #2f86d9 50%, #9f989b 100%); */
+  background: linear-gradient(135deg, #9f989b  0%, #2f86d9 50%, #3461f0 100%);
   padding: 100px 0 30px;
   color: rgba(255, 255, 255, 0.8);
   position: relative;
@@ -170,7 +170,7 @@
   left: 0;
   width: 40px;
   height: 3px;
-  background: linear-gradient(135deg, #032dec 0%, #0aa5dd 100%);
+  background: linear-gradient(135deg, #3461f0 0%, #0aa5dd 100%);
   border-radius: 2px;
 }
 
@@ -201,7 +201,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #9f989b, #0a63b7, #032dec);
+  background: linear-gradient(90deg, #9f989b, #2f86d9, #3461f0);
   transition: width 0.3s ease;
 }
 

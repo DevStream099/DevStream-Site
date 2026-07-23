@@ -4,8 +4,8 @@ import './Portfolio.css';
 import { portfolioItems } from './portfolioData';
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.97 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] } },
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] } },
 };
 
 const Portfolio = () => (
@@ -24,13 +24,18 @@ const Portfolio = () => (
 
       <motion.div
         className="portfolio-grid"
-        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}
+        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: '-60px' }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         {portfolioItems.map((item) => (
-          <motion.div className="portfolio-item" key={item.id} variants={cardVariants}>
+          <motion.div
+            className="portfolio-item"
+            key={item.id}
+            variants={cardVariants}
+            style={{ willChange: 'transform, opacity' }}
+          >
             <Link to={`/projects/${item.id}`} className="portfolio-link-wrapper">
               <div className="portfolio-image">
                 <img src={item.image} alt={item.title} className="portfolio-img" />

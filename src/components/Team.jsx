@@ -10,7 +10,7 @@ const teamMembers = [
     name: 'Muhammad Umar',
     role: 'Founder',
     image: umarImg,
-    gradient: 'linear-gradient(135deg, #032dec, #0a63b7, #9f989b)',
+    gradient: 'linear-gradient(135deg, #3461f0, #2f86d9, #9f989b)',
     upwork: 'https://www.upwork.com/freelancers/muhammadu165',
     fiverr: 'https://www.fiverr.com/s/pdD1NWY',
     linkedin: 'https://www.linkedin.com/in/muhammad-umar-7547b4156/',

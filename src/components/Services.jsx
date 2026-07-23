@@ -21,20 +21,23 @@ const services = [
         <polyline points="8 6 2 12 8 18"/>
       </svg>
     ),
-    title: 'Full-Stack Development',
+    title: 'Web App Development',
     description:
-      'End-to-end development using React JS, Node.js, REST APIs, GraphQL, and scalable backend architecture.',
+      'Responsive, high-performance web applications built with React JS, Next.js, Node.js, REST APIs, and GraphQL on scalable backend architecture.',
     color: '#764ba2',
   },
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
+        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+        <path d="M2 2l7.586 7.586"/>
+        <circle cx="11" cy="11" r="2"/>
       </svg>
     ),
-    title: 'Real-Time Applications',
+    title: 'UI/UX Design Service',
     description:
-      'Live chat systems, tracking apps, and WebSocket-based platforms using Socket.io and Firebase.',
+      'User-centered UI/UX design with wireframes, prototypes, and design systems crafted in Figma for intuitive, delightful experiences.',
     color: '#ed64a6',
   },
   {
@@ -56,9 +59,9 @@ const services = [
         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
       </svg>
     ),
-    title: 'E-Commerce & Payments',
+    title: 'E-Commerce Solutions',
     description:
-      'Secure payment integrations including Stripe, In-App Purchases, and FlutterWave with optimized checkout flows.',
+      'End-to-end online stores built with Shopify, WooCommerce, and other e-commerce platforms, plus custom storefronts and secure payment integrations.',
     color: '#4facfe',
   },
   {
@@ -70,7 +73,7 @@ const services = [
     ),
     title: 'Testing & Deployment',
     description:
-      'Unit testing (Jest, Cypress), CI/CD pipelines, and App Store & Play Store deployment support.',
+      'Unit and E2E testing (Jest, Cypress, Playwright), CI/CD pipelines, web deployment (Vercel, Netlify, AWS), and App Store & Play Store mobile app deployment.',
     color: '#00f2fe',
   },
 ];
