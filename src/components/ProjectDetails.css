@@ -1,5 +1,5 @@
 .project-details-page {
-  padding-top: 130px; /* extra space for fixed navbar */
+  padding-top: 50px;
   padding-bottom: 130px;
   overflow: visible; /* allow the side nav arrows to sit outside without clipping */
   background: radial-gradient(circle at top left, rgba(102, 126, 234, 0.18), transparent 55%),
@@ -198,11 +198,11 @@
 }
 
 .project-nav-btn.prev {
-  left: -130px;
+  left: -70px;
 }
 
 .project-nav-btn.next {
-  right: -130px;
+  right: -70px;
 }
 
 .project-nav-btn svg {
@@ -220,6 +220,16 @@
 
 .project-nav-btn.next:hover {
   transform: translateY(-50%) translateX(4px);
+}
+
+/* Pull arrows inside the content before they'd clip off narrower screens */
+@media (max-width: 1400px) {
+  .project-nav-btn.prev {
+    left: 8px;
+  }
+  .project-nav-btn.next {
+    right: 8px;
+  }
 }
 
 @keyframes slideInLeft {
@@ -247,7 +257,7 @@
 /* Responsive */
 @media (max-width: 992px) {
   .project-details-page {
-    padding-top: 140px;
+    padding-top: 40px;
   }
 
   .project-details-content {
@@ -265,11 +275,40 @@
     list-style-position: inside;
   }
 
+  .project-nav-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .project-nav-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
   .project-nav-btn.prev {
-    left: 10px;
+    left: 8px;
   }
 
   .project-nav-btn.next {
-    right: 10px;
+    right: 8px;
+  }
+
+  .project-info h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .project-details-page {
+    padding-top: 30px;
+    padding-bottom: 80px;
+  }
+
+  .project-details-content {
+    gap: 30px;
+  }
+
+  .project-info h2 {
+    font-size: 24px;
   }
 }

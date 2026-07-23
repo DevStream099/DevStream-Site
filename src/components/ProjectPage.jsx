@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { portfolioItems } from './portfolioData';
 import ProjectDetails from './ProjectDetails';
-import Header from './Header';
 import Footer from './Footer';
 
 const ProjectPage = () => {
@@ -46,7 +45,6 @@ const ProjectPage = () => {
   if (!project) {
     return (
       <>
-        <Header />
         <section className="project-details section project-details-page">
           <div className="project-bg-decor" />
           <div className="container">
@@ -64,7 +62,6 @@ const ProjectPage = () => {
 
   return (
     <>
-      <Header />
       <section className="project-details section project-details-page">
         <div className="project-bg-decor" />
         <div className="container">

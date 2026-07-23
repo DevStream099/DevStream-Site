@@ -119,11 +119,6 @@
   line-height: 1.7;
   margin-bottom: 18px;
   color: #555;
-  display: -webkit-box;
-  line-clamp: 3;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 /* ===== Rating ===== */
@@ -192,9 +187,14 @@
 }
 
 @media (max-width: 768px) {
+  .testimonials .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .testimonial-card {
     padding: 28px 22px;
-    flex-basis: 340px;
+    flex-basis: 320px;
   }
 
   .testimonial-text {
@@ -207,6 +207,19 @@
 }
 
 @media (max-width: 480px) {
+  /* Reduce the edge fade so card text isn't clipped on narrow screens */
+  .testimonials-marquee {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+    padding-block: 30px;
+  }
+
+  /* One card fits comfortably, the next peeks in */
+  .testimonial-card {
+    flex-basis: 84vw;
+    padding: 24px 20px;
+  }
+
   .testimonial-text {
     font-size: 20px;
   }
