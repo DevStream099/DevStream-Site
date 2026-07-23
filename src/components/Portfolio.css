@@ -5,28 +5,6 @@
 }
 
 
-.portfolio .section-title h2 {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
-}
-
-.portfolio.visible .section-title h2 {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.portfolio .section-title p {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-}
-
-.portfolio.visible .section-title p {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ===== Portfolio Grid ===== */
 .portfolio-grid {
   display: grid;
@@ -37,9 +15,6 @@
 /* ===== Portfolio Item ===== */
 .portfolio-item {
   cursor: pointer;
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project-description{
   margin-top: 10px;
@@ -51,12 +26,6 @@
   line-height: 1.5;
 }
 
-.portfolio.visible .portfolio-item {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition-delay: var(--delay);
-}
-
 /* ===== Portfolio Image ===== */
 .portfolio-image {
   position: relative;
@@ -66,9 +35,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   background: #f0f0f0;
+  /* Keep on its own GPU layer to avoid repaint flicker during reveal/hover */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .portfolio-img {
@@ -221,14 +194,6 @@
 .portfolio-cta {
   text-align: center;
   margin-top: 60px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
-}
-
-.portfolio.visible .portfolio-cta {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .portfolio-cta .btn-secondary {

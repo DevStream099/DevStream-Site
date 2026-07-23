@@ -7,7 +7,7 @@
   --heading-color: #1a1a2e;
   --text-color: #4a4a68;
   --bg-light: #ececec;
- --bg-gradient: linear-gradient(135deg, #032dec 0%, #0a63b7 50%, #9f989b 100%);
+ --bg-gradient: linear-gradient(135deg, #3461f0 0%, #2f86d9 50%, #9f989b 100%);
   --white: #ffffff;
   --footer-bg: #1a1a2e;
   --card-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
@@ -31,6 +31,9 @@ body {
   color: var(--text-color);
   background-color: var(--white);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {

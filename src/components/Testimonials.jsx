@@ -1,76 +1,90 @@
-import { useEffect, useRef, useState } from "react";
-import "./Testimonials.css";
+import { motion } from 'motion/react';
+import './Testimonials.css';
 
-const Testimonials = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+const testimonialsData = [
+  {
+    text: 'Exceptional React Native Team',
+    description:
+      'An exceptional React Native team who consistently delivered high-quality work. Their deep understanding of React Native and its ecosystem is evident in the innovative solutions they brought to our project. A rare combination of technical expertise, creativity, and a keen eye for detail. I will definitely hire them again!',
+    name: 'Verified Upwork Client',
+    role: 'React Native Developer — Ongoing Work',
+    initials: 'RN',
+  },
+  {
+    text: 'Great to Work With',
+    description:
+      'Umar was responsive, professional, and easy to collaborate with throughout the process. He communicated well, adapted to changing requirements, and consistently put in solid effort to keep things moving forward. I appreciated his reliability and would be happy to work with him again.',
+    name: 'Verified Upwork Client',
+    role: 'Build an AI Content Platform',
+    initials: 'AI',
+  },
+  {
+    text: 'Excellent MERN & React Native Expertise',
+    description:
+      'Excellent developer with strong expertise in MERN stack and React Native. Maryam delivered high-quality work, communicated clearly throughout the project, and consistently provided practical solutions to complex challenges. Reliable, professional, and easy to work with.',
+    name: 'Verified Upwork Client',
+    role: 'ReactJS / React Native QA',
+    initials: 'QA',
+  },
+  {
+    text: 'Professional & Highly Recommended',
+    description:
+      'The team was great to work with on this project. They were able to work with my existing codebase and extend the functionality without any issues. Great communicators, provided consistent meetings and updates, and kept to our project timeline. We are continuing to work with them on other projects.',
+    name: 'Verified Upwork Client',
+    role: 'Build a Voice Agent Dashboard',
+    initials: 'VA',
+  },
+  {
+    text: 'A Very Reliable Developer',
+    description:
+      'Muhammad is a very reliable developer. He has a masterful control of English communications, he listens, and gives me exactly what I expect.',
+    name: 'Verified Upwork Client',
+    role: 'Outing Resort / Courses Screen',
+    initials: 'OR',
+  },
+  {
+    text: 'CI/CD Pipeline Fixed Efficiently',
+    description:
+      'Umar quickly identified and resolved the issues in our React Native Expo CI/CD pipeline. Communication was clear throughout the project, and he demonstrated strong expertise with Expo, EAS Build, and deployment automation. Our build and deployment process is now running smoothly.',
+    name: 'johnspelman1',
+    role: 'Fiverr Client',
+    initials: 'J',
+  },
+  {
+    text: 'Delivered Ahead of Time',
+    description:
+      'He has done an exceptional job. He understood my requirements and delivered ahead of time exactly what I wanted. I will recommend him 100%.',
+    name: 'dbooker_racing',
+    role: 'Fiverr Client',
+    initials: 'D',
+  },
+  {
+    text: 'Outstanding Work Under Pressure',
+    description:
+      'Outstanding work! My React Native app was failing during the Android build process, and Maryam fixed it efficiently without breaking anything else.',
+    name: 'johndoefresh',
+    role: 'Fiverr Client',
+    initials: 'J',
+  },
+];
 
-  const testimonialsData = [
-    {
-      text: "Amazing Designs and Quality Work!",
-      description:
-        "DevStream delivered beyond our expectations. The UI/UX quality and performance were absolutely top-notch.",
-      name: "John Doe",
-      role: "CEO, Acme Inc.",
-      initials: "JD",
-    },
-    {
-      text: "Highly Professional Team",
-      description:
-          "Collaborating with DevStream was seamless. Their strategic insights, technical expertise, and proactive communication significantly contributed to the success of our projects.",
-      name: "Sarah Khan",
-      role: "Marketing Director, BrightCo",
-      initials: "SK",
-    },
-    {
-      text: "Outstanding Support & Delivery",
-      description:
-        "DevStream demonstrated exceptional project management and technical proficiency. They delivered our solutions ahead of schedule while maintaining the highest standards.",
-      name: "Michael Lee",
-      role: "Founder, StartUp Hub",
-      initials: "ML",
-    },
-    {
-      text: "Creative & Reliable Developers",
-      description:
-        "DevStream transformed our ideas into a modern and responsive platform. Highly recommended!",
-      name: "Emma Wilson",
-      role: "Product Manager, TechFlow",
-      initials: "EW",
-    },
-  ];
+// Duplicate for seamless infinite scroll
+const scrollingTestimonials = [...testimonialsData, ...testimonialsData];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Duplicate items once for a seamless infinite scroll loop.
-  const scrollingTestimonials = [...testimonialsData, ...testimonialsData];
-
-  return (
-    <section
-      id="testimonial"
-      className={`testimonials section ${isVisible ? "visible" : ""}`}
-      ref={sectionRef}
-    >
-      <div className="container">
-        <div className="testimonials-marquee" aria-label="Testimonials">
-          <div className="testimonials-track">
-            {scrollingTestimonials.map((item, index) => (
-              <div className="testimonial-card" key={`${item.name}-${index}`}>
+const Testimonials = () => (
+  <motion.section
+    id="testimonial"
+    className="testimonials section"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true, margin: '-80px' }}
+    transition={{ duration: 0.6, ease: 'easeOut' }}
+  >
+    <div className="container">
+      <div className="testimonials-marquee" aria-label="Testimonials">
+        <div className="testimonials-track">
+          {scrollingTestimonials.map((item, index) => (
+            <div className="testimonial-card" key={`${item.name}-${index}`}>
               <div className="testimonial-glow"></div>
 
               <div className="quote-icon">
@@ -80,10 +94,7 @@ const Testimonials = () => {
               </div>
 
               <p className="testimonial-text">{item.text}</p>
-
-              <p className="testimonial-description">
-                {item.description}
-              </p>
+              <p className="testimonial-description">{item.description}</p>
 
               <div className="testimonial-rating">
                 {[...Array(5)].map((_, i) => (
@@ -104,11 +115,10 @@ const Testimonials = () => {
               </div>
             </div>
           ))}
-          </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </motion.section>
+);
 
 export default Testimonials;

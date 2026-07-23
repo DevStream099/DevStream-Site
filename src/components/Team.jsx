@@ -1,169 +1,125 @@
-import { useEffect, useRef, useState } from "react";
-import "./Team.css";
+import { motion } from 'motion/react';
+import './Team.css';
 
- import umarImg from "../../src/assets/Umar.png";
-import maryamImg from "../../src/assets/Maryam.jpg";
+import umarImg from '../../src/assets/Umar.png';
+import maryamImg from '../../src/assets/Maryam.jpg';
 
 const teamMembers = [
   {
     id: 1,
-    name: "Muhammad Umar",
-    role: "CEO",
+    name: 'Muhammad Umar',
+    role: 'Founder',
     image: umarImg,
-    gradient: "linear-gradient(135deg, #032dec, #0a63b7, #9f989b)",
-    facebook: "https://www.facebook.com/profile.php?id=100032857386986",
-    instagram: "https://www.instagram.com/o_m_e_r_099/",
-    linkedin: "https://www.linkedin.com/in/muhammad-umar-7547b4156/",
+    gradient: 'linear-gradient(135deg, #3461f0, #2f86d9, #9f989b)',
+    upwork: 'https://www.upwork.com/freelancers/muhammadu165',
+    fiverr: 'https://www.fiverr.com/s/pdD1NWY',
+    linkedin: 'https://www.linkedin.com/in/muhammad-umar-7547b4156/',
   },
   {
     id: 2,
-    name: "Maryam Shakir",
-    role: "CTO",
+    name: 'Maryam Shakir',
+    role: 'Co-Founder',
     image: maryamImg,
-    gradient: "linear-gradient(135deg, #f093fb, #f5576c)",
-    facebook:
-      "https://www.facebook.com/maryam.shakir.750?rdid=YV6NFuf460JXdZiI&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1KTnMPNZhT%2F#",
-    instagram: "https://www.instagram.com/mryamshakir",
-    linkedin: "https://www.linkedin.com/in/maryam-shakir-a06426296/",
+    gradient: 'linear-gradient(135deg, #f093fb, #f5576c)',
+    upwork: 'https://www.upwork.com/freelancers/~0120fdc151e0eed0d7?mp_source=share',
+    fiverr: 'https://www.fiverr.com/s/R7L8vgl',
+    linkedin: 'https://www.linkedin.com/in/maryam-shakir-a06426296/',
   },
 ];
 
-const Team = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } },
+};
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 },
-    );
+const Team = () => (
+  <section id="about" className="team section">
+    <div className="container">
+      <motion.div
+        className="section-title"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      >
+        <h2>Meet Our Leadership</h2>
+        <p>Our experienced team is dedicated to delivering exceptional results for every client.</p>
+      </motion.div>
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <section
-      id="about"
-      className={`team section ${isVisible ? "visible" : ""}`}
-      ref={sectionRef}
-    >
-      <div className="container">
-        <div className="section-title">
-          <h2>Meet Our Leadership</h2>
-          <p>
-            Our experienced team is dedicated to delivering exceptional results
-            for every client.
-          </p>
-        </div>
-
-        <div className="team-grid">
-          {teamMembers.map((member, index) => (
-            <div
-              className="team-card"
-              key={member.id}
-              style={{ "--delay": `${index * 0.15}s` }}
-            >
-              <div className="team-card-inner">
-                <div className="team-avatar-wrapper">
-                  <div
-                    className="team-avatar"
-                    style={{ background: member.gradient }}
-                  >
-                    {member.image ? (
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="team-avatar-img"
-                      />
-                    ) : (
-                      <span>{member.initials}</span>
-                    )}
-
-                    <div
-                      className="avatar-glow"
-                      style={{ background: member.gradient }}
-                    ></div>
-                  </div>
-
-                  <div
-                    className="avatar-ring"
-                    style={{ borderColor: "rgba(102, 126, 234, 0.3)" }}
-                  ></div>
+      <motion.div
+        className="team-grid"
+        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.15 } } }}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-60px' }}
+      >
+        {teamMembers.map((member) => (
+          <motion.div className="team-card" key={member.id} variants={cardVariants}>
+            <div className="team-card-inner">
+              <div className="team-avatar-wrapper">
+                <div className="team-avatar" style={{ background: member.gradient }}>
+                  {member.image ? (
+                    <img src={member.image} alt={member.name} className="team-avatar-img" loading="lazy" />
+                  ) : (
+                    <span>{member.initials}</span>
+                  )}
+                  <div className="avatar-glow" style={{ background: member.gradient }}></div>
                 </div>
+                <div
+                  className="avatar-ring"
+                  style={{ borderColor: 'rgba(102, 126, 234, 0.3)' }}
+                ></div>
+              </div>
 
-                <h3>{member.name}</h3>
-                <span className="team-role">{member.role}</span>
+              <h3>{member.name}</h3>
+              <span className="team-role">{member.role}</span>
 
-                <div className="team-socials">
-                  {/* Facebook */}
-                  <a
-                    href={member.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                    className="social-link"
-                  >
-                    <svg
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" />
-                    </svg>
-                  </a>
+              <div className="team-socials">
+                {/* LinkedIn */}
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="social-link"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z" />
+                  </svg>
+                </a>
 
-                  {/* Instagram */}
-                  <a
-                    href={member.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                    className="social-link"
-                  >
-                    <svg
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm4.25 5a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.75-2.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" />
-                    </svg>
-                  </a>
+                {/* Upwork */}
+                <a
+                  href={member.upwork}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Upwork"
+                  className="social-link"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.545-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/>
+                  </svg>
+                </a>
 
-                  {/* LinkedIn */}
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    className="social-link"
-                  >
-                    <svg
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z" />
-                    </svg>
-                  </a>
-                </div>
+                {/* Fiverr */}
+                <a
+                  href={member.fiverr}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Fiverr"
+                  className="social-link"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16.25 16.25v-7.5h-7.5V7.113c0-.905.725-1.363 1.644-1.363h1.856V2H9.831C6.875 2 5.75 3.781 5.75 6.25v2.5H3.75v3.75h2v7.5h3.75v-7.5h3.75v7.5h3zm.25-11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                  </svg>
+                </a>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  </section>
+);
 
 export default Team;
