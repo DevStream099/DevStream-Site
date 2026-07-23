@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import './Hero.css';
-import heroVideo from '../assets/Video/hero-video.mp4';
+import heroBg from '../assets/1.jpg';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -9,17 +9,7 @@ const fadeUp = {
 
 const Hero = () => (
   <section id="home" className="hero">
-    <video
-      className="hero-bg-video"
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      aria-hidden="true"
-    >
-      <source src={heroVideo} type="video/mp4" />
-    </video>
+    <img className="hero-bg-video" src={heroBg} alt="" aria-hidden="true" />
     <div className="hero-overlay"></div>
 
     <div className="container">

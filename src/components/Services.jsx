@@ -5,14 +5,16 @@ const services = [
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-        <path d="M12 18h.01"/>
+        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+        <path d="M2 2l7.586 7.586"/>
+        <circle cx="11" cy="11" r="2"/>
       </svg>
     ),
-    title: 'Mobile App Development',
+    title: 'UI/UX Design Service',
     description:
-      'Cross-platform iOS and Android applications built using React Native, Expo, Swift, and Kotlin with optimized performance and seamless user experience.',
-    color: '#667eea',
+      'User-centered UI/UX design with wireframes, prototypes, and design systems crafted in Figma for intuitive, delightful experiences.',
+    color: '#ed64a6',
   },
   {
     icon: (
@@ -29,16 +31,14 @@ const services = [
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-        <path d="M2 2l7.586 7.586"/>
-        <circle cx="11" cy="11" r="2"/>
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+        <path d="M12 18h.01"/>
       </svg>
     ),
-    title: 'UI/UX Design Service',
+    title: 'Mobile App Development',
     description:
-      'User-centered UI/UX design with wireframes, prototypes, and design systems crafted in Figma for intuitive, delightful experiences.',
-    color: '#ed64a6',
+      'Cross-platform iOS and Android applications built using React Native, Expo, Swift, and Kotlin with optimized performance and seamless user experience.',
+    color: '#667eea',
   },
   {
     icon: (
@@ -101,8 +101,9 @@ const Services = () => (
       >
         <h2>How can we help you?</h2>
         <p>
-          We build scalable mobile and web applications with modern technologies, ensuring
-          performance, security, and exceptional user experience.
+          From UI/UX design to mobile and web app development, e-commerce, and deployment, we
+          deliver complete solutions built for performance, security, and exceptional user
+          experience.
         </p>
       </motion.div>
 

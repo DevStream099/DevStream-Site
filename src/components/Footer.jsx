@@ -44,6 +44,7 @@ const Footer = () => {
               We are a digital agency focused on creating amazing websites and digital experiences
               for businesses worldwide.
             </p>
+            {/* Social links hidden for now
             <div className="footer-socials">
               <a href="#" aria-label="Facebook" className="social-link">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -65,6 +66,7 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
+            */}
             <div className="cta-particles">
               {particles.map((p, i) => (
                 <span

@@ -1,6 +1,7 @@
 .project-details-page {
   padding-top: 130px; /* extra space for fixed navbar */
   padding-bottom: 130px;
+  overflow: visible; /* allow the side nav arrows to sit outside without clipping */
   background: radial-gradient(circle at top left, rgba(102, 126, 234, 0.18), transparent 55%),
               radial-gradient(circle at bottom right, rgba(118, 75, 162, 0.18), transparent 55%),
               var(--bg-light);
@@ -77,7 +78,36 @@
   font-size: 14px;
 }
 
+/* ===== Back Chevron ===== */
+.back-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--heading-color);
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(102, 126, 234, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.back-chevron svg {
+  width: 22px;
+  height: 22px;
+}
+
+.back-chevron:hover {
+  transform: translateX(-3px);
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(102, 126, 234, 0.28);
+}
+
 .project-details-content {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,6 +117,7 @@
 }
 
 .project-image {
+  position: relative;
   flex: 0 0 55%;
   max-width: 620px;
   transform-origin: left center;
@@ -146,6 +177,51 @@
   margin-bottom: 10px;
 }
 
+/* ===== Prev / Next Navigation (flanking the whole content row) ===== */
+.project-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(102, 126, 234, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-nav-btn.prev {
+  left: -130px;
+}
+
+.project-nav-btn.next {
+  right: -130px;
+}
+
+.project-nav-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.project-nav-btn:hover {
+  box-shadow: 0 16px 34px rgba(102, 126, 234, 0.5);
+}
+
+.project-nav-btn.prev:hover {
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.project-nav-btn.next:hover {
+  transform: translateY(-50%) translateX(4px);
+}
+
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -187,5 +263,13 @@
   .project-info ul {
     padding-left: 0;
     list-style-position: inside;
+  }
+
+  .project-nav-btn.prev {
+    left: 10px;
+  }
+
+  .project-nav-btn.next {
+    right: 10px;
   }
 }

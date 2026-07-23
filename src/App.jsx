@@ -10,6 +10,7 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 import ContactForm from './components/ContactForm';
 import ProjectPage from './components/ProjectPage';
+import WhatsAppButton from './components/WhatsAppButton';
 import './App.css';
 
 const MainLayout = () => {
@@ -31,10 +32,13 @@ const MainLayout = () => {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />} />
-      <Route path="/projects/:id" element={<ProjectPage />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<MainLayout />} />
+        <Route path="/projects/:id" element={<ProjectPage />} />
+      </Routes>
+      <WhatsAppButton />
+    </>
   );
 }
 
