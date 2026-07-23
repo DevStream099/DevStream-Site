@@ -199,6 +199,38 @@
   resize: vertical;
 }
 
+/* Dropdowns styled to match inputs */
+.form-select {
+  padding: 14px 16px;
+  border: 2px solid #1679db;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+  color: #222;
+  cursor: pointer;
+  transition: 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231679db' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+  width: 100%;
+}
+
+.form-select:focus {
+  border-color: #103c68;
+}
+
+.form-select.placeholder {
+  color: #767676;
+}
+
+.form-select.invalid {
+  border-color: #d64545;
+}
+
 /* Button */
 .contact-form button {
   background: linear-gradient(90deg, #1679db, #103c68);

@@ -1,8 +1,29 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./ContactForm.css";
 
 const CAL_LINK = "https://cal.com/muhammad-umar-b87ycu/30min";
+
+const SERVICE_OPTIONS = [
+  "Mobile App Development",
+  "Web App Development",
+  "UI/UX Design",
+  "E-Commerce Solution",
+  "Other / Not sure yet",
+];
+
+const BUDGET_OPTIONS = [
+  "Under $1,000",
+  "$1,000 – $5,000",
+  "$5,000 – $10,000",
+  "$10,000+",
+];
+
+const TIMELINE_OPTIONS = [
+  "As soon as possible",
+  "Within 1–3 months",
+  "Just exploring for now",
+];
 
 // Fire a lead event that Google Ads / GTM can pick up as a conversion.
 const trackLead = (method) => {
@@ -14,7 +35,15 @@ const trackLead = (method) => {
   }
 };
 
-const emptyForm = { name: "", email: "", phone: "", message: "" };
+const emptyForm = {
+  name: "",
+  email: "",
+  phone: "",
+  service: "",
+  budget: "",
+  timeline: "",
+  message: "",
+};
 
 const ContactForm = () => {
   const [activeTab, setActiveTab] = useState("email");
@@ -24,6 +53,11 @@ const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formError, setFormError] = useState("");
   const [honeypot, setHoneypot] = useState(""); // spam trap, real users never fill this
+  const mountedAt = useRef(0); // time-trap: bots submit almost instantly
+
+  useEffect(() => {
+    mountedAt.current = Date.now();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,6 +73,9 @@ const ContactForm = () => {
       errs.email = "Please enter a valid email address.";
     if (formData.phone.replace(/\D/g, "").length < 7)
       errs.phone = "Please enter a valid phone number.";
+    if (!formData.service) errs.service = "Please select a service.";
+    if (!formData.budget) errs.budget = "Please select a budget range.";
+    if (!formData.timeline) errs.timeline = "Please select a timeline.";
     if (!formData.message.trim()) errs.message = "Please enter a short message.";
     return errs;
   };
@@ -46,8 +83,9 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Bot filled the hidden field — pretend success, don't send anything.
-    if (honeypot) {
+    // Bot traps: hidden field filled, or form submitted suspiciously fast.
+    // Pretend success so bots don't retry, but send nothing.
+    if (honeypot || Date.now() - mountedAt.current < 3000) {
       setSubmitted(true);
       return;
     }
@@ -202,6 +240,77 @@ const ContactForm = () => {
                   className={errors.phone ? "invalid" : ""}
                 />
                 {errors.phone && <span className="field-error">{errors.phone}</span>}
+              </div>
+
+              <div className="form-row">
+                <div className="form-field">
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    aria-label="Service you need"
+                    aria-invalid={!!errors.service}
+                    className={`form-select ${errors.service ? "invalid" : ""} ${
+                      formData.service ? "" : "placeholder"
+                    }`}
+                  >
+                    <option value="" disabled>
+                      Service you need
+                    </option>
+                    {SERVICE_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.service && <span className="field-error">{errors.service}</span>}
+                </div>
+
+                <div className="form-field">
+                  <select
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    aria-label="Budget range"
+                    aria-invalid={!!errors.budget}
+                    className={`form-select ${errors.budget ? "invalid" : ""} ${
+                      formData.budget ? "" : "placeholder"
+                    }`}
+                  >
+                    <option value="" disabled>
+                      Budget range
+                    </option>
+                    {BUDGET_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.budget && <span className="field-error">{errors.budget}</span>}
+                </div>
+              </div>
+
+              <div className="form-field">
+                <select
+                  name="timeline"
+                  value={formData.timeline}
+                  onChange={handleChange}
+                  aria-label="Project timeline"
+                  aria-invalid={!!errors.timeline}
+                  className={`form-select ${errors.timeline ? "invalid" : ""} ${
+                    formData.timeline ? "" : "placeholder"
+                  }`}
+                >
+                  <option value="" disabled>
+                    When do you want to start?
+                  </option>
+                  {TIMELINE_OPTIONS.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+                {errors.timeline && <span className="field-error">{errors.timeline}</span>}
               </div>
 
               <div className="form-field">

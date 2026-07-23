@@ -46,7 +46,7 @@ const LogosSection = () => {
                 className={`logo-item ${logo.sizeClass || ""}`}
                 key={`${logo.alt}-${index}`}
               >
-                <img src={logo.src} alt={logo.alt} />
+                <img src={logo.src} alt={logo.alt} loading="lazy" />
               </div>
             ))}
           </div>

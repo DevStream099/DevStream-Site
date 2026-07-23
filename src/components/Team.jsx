@@ -59,7 +59,7 @@ const Team = () => (
               <div className="team-avatar-wrapper">
                 <div className="team-avatar" style={{ background: member.gradient }}>
                   {member.image ? (
-                    <img src={member.image} alt={member.name} className="team-avatar-img" />
+                    <img src={member.image} alt={member.name} className="team-avatar-img" loading="lazy" />
                   ) : (
                     <span>{member.initials}</span>
                   )}

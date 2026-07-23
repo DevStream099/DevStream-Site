@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 import ContactForm from './components/ContactForm';
 import ProjectPage from './components/ProjectPage';
 import WhatsAppButton from './components/WhatsAppButton';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 import './App.css';
 
 const MainLayout = () => {
@@ -36,6 +38,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />} />
         <Route path="/projects/:id" element={<ProjectPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
       </Routes>
       <WhatsAppButton />
     </>

@@ -38,7 +38,7 @@ const Portfolio = () => (
           >
             <Link to={`/projects/${item.id}`} className="portfolio-link-wrapper">
               <div className="portfolio-image">
-                <img src={item.image} alt={item.title} className="portfolio-img" />
+                <img src={item.image} alt={item.title} className="portfolio-img" loading="lazy" />
                 <div className="portfolio-pattern">
                   <svg viewBox="0 0 100 100" preserveAspectRatio="none">
                     <defs>

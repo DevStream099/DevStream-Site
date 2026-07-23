@@ -1,12 +1,12 @@
-import portfolioImage1 from '../../src/assets/project1.png';
-import portfolioImage2 from '../../src/assets/project2.png';
-import portfolioImage3 from '../../src/assets/project3.png';
-import portfolioImage4 from '../../src/assets/project4.png';
-import portfolioImage5 from '../../src/assets/Project5.png';
-import portfolioImage6 from '../../src/assets/Project6.png';
-import portfolioImage7 from '../../src/assets/Project7.png';
-import portfolioImage8 from '../../src/assets/Project8.png';
-import portfolioImage9 from '../../src/assets/Project9.png';
+import portfolioImage1 from '../../src/assets/project1.jpg';
+import portfolioImage2 from '../../src/assets/project2.jpg';
+import portfolioImage3 from '../../src/assets/project3.jpg';
+import portfolioImage4 from '../../src/assets/project4.jpg';
+import portfolioImage5 from '../../src/assets/project5.jpg';
+import portfolioImage6 from '../../src/assets/project6.jpg';
+import portfolioImage7 from '../../src/assets/project7.jpg';
+import portfolioImage8 from '../../src/assets/project8.jpg';
+import portfolioImage9 from '../../src/assets/project9.jpg';
 
 
 export const portfolioItems = [

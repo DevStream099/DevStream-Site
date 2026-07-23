@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import DevLogo from '../assets/DevLogo.png';
 import './Footer.css';
 
@@ -143,8 +144,8 @@ const Footer = () => {
           <div className="footer-bottom-content">
             <p>Copyright &copy; 2026 Digital Agency | Powered by DevStream</p>
             <div className="footer-bottom-links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
+              <Link to="/privacy-policy">Privacy Policy</Link>
+              <Link to="/terms-of-service">Terms of Service</Link>
             </div>
           </div>
         </motion.div>

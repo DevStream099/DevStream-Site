@@ -9,7 +9,13 @@ const fadeUp = {
 
 const Hero = () => (
   <section id="home" className="hero">
-    <img className="hero-bg-video" src={heroBg} alt="" aria-hidden="true" />
+    <img
+      className="hero-bg-video"
+      src={heroBg}
+      alt=""
+      aria-hidden="true"
+      fetchPriority="high"
+    />
     <div className="hero-overlay"></div>
 
     <div className="container">
