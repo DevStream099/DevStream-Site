@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import LogosSection from './components/LogosSection';
@@ -40,6 +40,7 @@ function App() {
         <Route path="/projects/:id" element={<ProjectPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <WhatsAppButton />
     </>

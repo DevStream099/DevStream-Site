@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import DevLogo from '../assets/DevLogo.png';
@@ -9,19 +8,17 @@ const colVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } },
 };
 
+// Deterministic decorative particle positions (computed once, keeps render pure).
+const particles = Array.from({ length: 15 }, (_, i) => ({
+  delay: `${i * 0.3}s`,
+  x: `${(i * 61 + 7) % 100}%`,
+  size: `${4 + (i % 4) * 1.6}px`,
+}));
+
 const Footer = () => {
-  const particles = useMemo(
-    () =>
-      Array.from({ length: 15 }, (_, i) => ({
-        delay: `${i * 0.3}s`,
-        x: `${Math.random() * 100}%`,
-        size: `${4 + Math.random() * 6}px`,
-      })),
-    [],
-  );
 
   return (
-    <footer id="contact" className="footer">
+    <footer id="footer" className="footer">
       {/* Background Elements */}
       <div className="footer-bg">
         <div className="footer-grid-pattern"></div>
