@@ -1,8 +1,8 @@
 import { motion } from 'motion/react';
 import './Team.css';
 
-import umarImg from '../../src/assets/Umar.png';
-import maryamImg from '../../src/assets/Maryam.jpg';
+import umarImg from '../../src/assets/umar.jpg';
+import maryamImg from '../../src/assets/maryam-new.jpg';
 
 const teamMembers = [
   {
