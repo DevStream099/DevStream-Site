@@ -185,6 +185,7 @@
   border: 2px solid #1679db;
   border-radius: 10px;
   font-size: 1rem;
+  font-family: inherit;
   outline: none;
   transition: 0.3s ease;
 }
@@ -205,6 +206,7 @@
   border: 2px solid #1679db;
   border-radius: 10px;
   font-size: 1rem;
+  font-family: inherit;
   outline: none;
   background: #fff;
   color: #222;
@@ -295,6 +297,12 @@
   height: 1px;
   opacity: 0;
   pointer-events: none;
+}
+
+/* reCAPTCHA */
+.recaptcha-box {
+  display: flex;
+  justify-content: center;
 }
 
 /* Reassurance note */

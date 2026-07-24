@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import "./ContactForm.css";
 
 const CAL_LINK = "https://cal.com/muhammad-umar-b87ycu/30min";
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const SERVICE_OPTIONS = [
   "Mobile App Development",
@@ -54,10 +55,48 @@ const ContactForm = () => {
   const [formError, setFormError] = useState("");
   const [honeypot, setHoneypot] = useState(""); // spam trap, real users never fill this
   const mountedAt = useRef(0); // time-trap: bots submit almost instantly
+  const recaptchaRef = useRef(null);
+  const widgetIdRef = useRef(null);
 
   useEffect(() => {
     mountedAt.current = Date.now();
   }, []);
+
+  // Load the reCAPTCHA v2 script once (only if a site key is configured).
+  useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY || window.grecaptcha) return;
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js?render=explicit";
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }, []);
+
+  // Render the widget whenever the email form is visible.
+  useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY || activeTab !== "email" || submitted) return undefined;
+    let cancelled = false;
+    const renderWidget = () => {
+      if (cancelled) return;
+      const g = window.grecaptcha;
+      if (g && g.render && recaptchaRef.current && widgetIdRef.current === null) {
+        try {
+          widgetIdRef.current = g.render(recaptchaRef.current, {
+            sitekey: RECAPTCHA_SITE_KEY,
+          });
+        } catch {
+          /* already rendered — ignore */
+        }
+      } else if (widgetIdRef.current === null) {
+        window.setTimeout(renderWidget, 300);
+      }
+    };
+    renderWidget();
+    return () => {
+      cancelled = true;
+      widgetIdRef.current = null; // let it re-render when the form returns
+    };
+  }, [activeTab, submitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -97,6 +136,18 @@ const ContactForm = () => {
       return;
     }
 
+    // reCAPTCHA: require a token (EmailJS verifies it server-side).
+    let captchaToken = "";
+    if (RECAPTCHA_SITE_KEY) {
+      captchaToken = window.grecaptcha
+        ? window.grecaptcha.getResponse(widgetIdRef.current ?? undefined)
+        : "";
+      if (!captchaToken) {
+        setFormError('Please complete the "I\'m not a robot" check.');
+        return;
+      }
+    }
+
     setSubmitting(true);
     setFormError("");
 
@@ -104,7 +155,7 @@ const ContactForm = () => {
       .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formData,
+        { ...formData, "g-recaptcha-response": captchaToken },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
@@ -113,12 +164,18 @@ const ContactForm = () => {
           setSubmitted(true);
           setFormData(emptyForm);
           setSubmitting(false);
+          if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
+            window.grecaptcha.reset(widgetIdRef.current ?? undefined);
+          }
         },
         () => {
           setSubmitting(false);
           setFormError(
             "Something went wrong sending your message. Please try again, or email us directly."
           );
+          if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
+            window.grecaptcha.reset(widgetIdRef.current ?? undefined);
+          }
         }
       );
   };
@@ -337,6 +394,13 @@ const ContactForm = () => {
                 onChange={(e) => setHoneypot(e.target.value)}
                 aria-hidden="true"
               />
+
+              {/* reCAPTCHA v2 — rendered only when a site key is configured */}
+              {RECAPTCHA_SITE_KEY && (
+                <div className="recaptcha-box">
+                  <div ref={recaptchaRef}></div>
+                </div>
+              )}
 
               <button type="submit" disabled={submitting}>
                 {submitting ? "Sending..." : "Send Message"}
